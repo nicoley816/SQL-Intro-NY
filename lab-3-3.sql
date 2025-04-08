@@ -1,5 +1,12 @@
 -- In the modern era (1960-present), how many regular season games did the best team win each season?
 -- Challenge: Try to include the team's name in the results. Is it accurate?
+SELECT year, name, MAX(wins)
+FROM teams
+WHERE year >= 1960
+GROUP BY year
+ORDER BY max(wins) DESC
+-- This cannot be trusted because can't SELECT name without name in GROUP BY
+-- Could have 2 teams with 116 wins, but the data will not show it
 
 -- Expected result: 61 rows, starting with
 --
